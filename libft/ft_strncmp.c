@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 18:03:59 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 08:59:52 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/12 15:53:46 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_strncmp( const char *first, const char *second, size_t length)
 {
-	char	*f;
-	char	*s;
+	unsigned char	*f;
+	unsigned char	*s;
 
-	f = (char *)first;
-	s = (char *)second;
+	f = (unsigned char *)first;
+	s = (unsigned char *)second;
 	while (length-- && (*f || *s))
 	{
 		if (*f != *s)

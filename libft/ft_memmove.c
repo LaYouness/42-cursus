@@ -6,13 +6,13 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:40:34 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 09:31:48 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/12 15:02:52 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+/* void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*s;
 	unsigned char	*tmp;
@@ -28,4 +28,20 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	while (n--)
 		*tmp++ = cont[i++];
 	return (dest);
+} */
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char	*s;
+	unsigned char	*tmp;
+
+	if (src < dest)
+	{
+		s = (unsigned char *)src + n - 1;
+		tmp = (unsigned char *)dest + n - 1;
+		while (n--)
+			*tmp-- = *s--;
+		return (dest);
+	}
+	return (ft_memcpy(dest, src, n));
 }

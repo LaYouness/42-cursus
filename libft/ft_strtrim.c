@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:14:11 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 09:00:57 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/12 11:26:54 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,15 @@ char	*find_from(const char *s1, const char *set)
 		else
 			return (s);
 	}
+	return (s);
 }
 
 char	*find_to(const char *s1, const char *set)
 {
-	char	*s;
 	char	*end;
 	size_t	sl;
 
 	sl = ft_strlen((char *)s1);
-	s = (char *)s1;
 	end = (char *)s1 + sl - 1;
 	while (s1 != end)
 	{
@@ -42,6 +41,7 @@ char	*find_to(const char *s1, const char *set)
 		else
 			return (end);
 	}
+	return (end);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
