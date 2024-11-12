@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 18:31:02 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 16:11:30 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/12 21:26:02 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	char	*b;
 	char	*l;
 	size_t	ll;
-	size_t	passed;
+	size_t	i;
 
 	l = (char *)little;
-	if (*l == 0)
-		return ((char *)big);
-	passed = 0;
 	b = (char *)big;
 	ll = ft_strlen(l);
-	while (len && passed <= len && *b)
+	if (ll == 0)
+		return ((char *)big);
+	i = 0;
+	while (i < len && *b)
 	{
-		if ((len - passed++) >= ll && ft_strncmp(b, l, ll) == 0)
+		if ((ft_strncmp(b, l, ll) == 0) && i + ll <= len)
 			return (b);
 		b++;
-		len--;
+		i++;
 	}
 	return (NULL);
 }
