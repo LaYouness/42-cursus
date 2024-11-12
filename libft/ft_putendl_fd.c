@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:22:51 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 08:55:32 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/12 10:21:54 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	ft_putchar_fd("\n", fd);
+	ft_putchar_fd('\n', fd);
 }

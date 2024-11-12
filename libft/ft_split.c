@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:08:25 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 08:57:03 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/12 10:22:39 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	char	**word_to_word;
-	char	*o;
 	size_t	now;
 	size_t	wl;
 
