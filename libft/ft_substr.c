@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 09:13:43 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 09:01:14 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/13 12:06:01 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*filler;
 
 	sl = ft_strlen((char *)s);
-	if (start >= sl || len == 0)
-		return (NULL);
+	if (start >= sl)
+		return (ft_calloc(1, 1));
 	if (len <= sl - start)
 		subsize = len + 1;
 	else
@@ -30,8 +30,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!substr)
 		return (NULL);
 	filler = substr;
-	while ((subsize--) - 1 > 0 && *s + start)
-		*filler++ = *s + start++;
+	while (subsize-- - 1 && *(s + start))
+		*filler++ = *(s + start++);
 	*filler = 0;
 	return (substr);
 }
