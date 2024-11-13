@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:12:09 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 09:33:51 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/13 09:24:37 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t			tts;
 	unsigned char	*buffer;
 
-	tts = nmemb * size;
-	if (size == 0 || nmemb == 0)
+	buffer = malloc(nmemb * size);
+	if (!buffer)
 		return (NULL);
-	buffer = malloc(tts);
-	ft_bzero(buffer, tts);
-	return (buffer);
+	ft_bzero(buffer, nmemb * size);
+	return ((void *)buffer);
 }

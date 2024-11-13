@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:39:51 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 08:41:34 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/13 09:07:25 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		p++;
 	}
-	while (*p >= '0' && *p <= '9')
+	while (ft_isdigit(*p))
 		r = r * 10 + (*p++ - 48);
 	return (r * sign);
 }

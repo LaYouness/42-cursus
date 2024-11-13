@@ -1,10 +1,10 @@
+NAME = libft.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 CFILES = $(wildcard *.c)
 BCFILES = $(wildcard *bonus.c)
 OFILES = $(CFILES:.c=.o)
 BOFILES = $(BCFILES:.c=.o)
-NAME = libft.a
 
 all: $(OFILES)
 	ar rcs $(NAME) $(OFILES)
