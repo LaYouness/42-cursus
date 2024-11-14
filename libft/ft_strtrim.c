@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:14:11 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 11:26:54 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/14 11:23:50 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	size;
 
 	from = find_from((char *)s1, (char *)set);
-	if (!from)
-	{
-		r = malloc(1);
-		*r = 0;
-		return (r);
-	}
+	if (*from == 0)
+		return (ft_calloc(1, 1));
 	to = find_to(from, (char *)set);
 	size = to - from + 2;
 	r = malloc(size);

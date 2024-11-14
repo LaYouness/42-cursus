@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:08:25 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 10:22:39 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/14 15:43:04 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static size_t	cw(char *s, char c)
 	now = 0;
 	while (*s)
 	{
-		while (*s == c)
-			s++;
 		if (*s && *s != c)
 		{
 			now++;
 			while (*s && *s != c)
 				s++;
 		}
+		while (*s == c)
+			s++;
 	}
 	return (now);
 }
@@ -56,16 +56,18 @@ char	**ft_split(char const *s, char c)
 	size_t	wl;
 
 	now = cw((char *)s, c);
+	if (now == 0)
+		return (ft_calloc(1, 1));
 	arr = malloc((now + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
 	word_to_word = arr;
-	while (now-- + 1)
+	while (now--)
 	{
 		while (*s == c)
 			s++;
 		wl = low((char *)s, c);
-		*word_to_word = malloc((wl + 1) * sizeof(char));
+		*word_to_word = malloc(wl + 1);
 		if (!*word_to_word)
 			return (free_all(arr, word_to_word), NULL);
 		ft_strlcpy(*word_to_word, s, wl + 1);
