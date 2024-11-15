@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ylaarare <ylaarare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:08:25 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/14 17:55:22 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/14 20:03:27 by ylaarare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	**ft_split(char const *s, char c)
 	size_t	now;
 	size_t	wl;
 
+	if (!s)
+		return (NULL);
 	now = cw((char *)s, c);
 	arr = ft_calloc((now + 1), sizeof(char *));
 	if (!arr)

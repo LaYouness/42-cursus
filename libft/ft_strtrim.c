@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ylaarare <ylaarare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:14:11 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/14 11:23:50 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/14 19:44:00 by ylaarare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*o;
 	size_t	size;
 
+	if (!s1)
+		return (NULL);
 	from = find_from((char *)s1, (char *)set);
 	if (*from == 0)
 		return (ft_calloc(1, 1));

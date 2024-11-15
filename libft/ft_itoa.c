@@ -6,7 +6,7 @@
 /*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 10:03:53 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/12 08:48:20 by younessla        ###   ########.fr       */
+/*   Updated: 2024/11/15 08:18:19 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static	char	*fillstr(int tsize, unsigned int un, char *s, int sign)
 	o = s;
 	s = s + tsize - 1;
 	*s-- = 0;
-	while (tsize--)
+	while (--tsize)
 	{
 		*s-- = (un % 10) + 48;
 		un /= 10;
@@ -54,12 +54,13 @@ char	*ft_itoa(int n)
 
 	size = find_nod(n);
 	sign = 0;
-	un = n;
 	if (n < 0)
 	{
 		sign = 1;
 		un = -n;
 	}
+	else
+		un = n;
 	tsize = size + 1 + sign;
 	s = malloc(tsize);
 	if (!s)
