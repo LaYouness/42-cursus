@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylaarare <ylaarare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younessla <younessla@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:35:09 by ylaarare          #+#    #+#             */
-/*   Updated: 2024/11/14 21:15:15 by ylaarare         ###   ########.fr       */
+/*   Updated: 2024/11/15 08:45:37 by younessla        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (n_lst_h);
 }
-
-// int main ()
-// {
-// 	t_list *head = ft_lstnew("hhhh");
-// 	t_list *a = ft_lstnew("fbhet");
-// 	//void *str = NULL;
-// 	t_list *b = ft_lstnew(NULL);
-// 	t_list *c = ft_lstnew("fbhet");
-// 	t_list *d = ft_lstnew("iuytre");
-// 	ft_lstadd_back(&head, a);
-// 	ft_lstadd_back(&head, b);
-// 	ft_lstadd_back(&head, c);
-// 	ft_lstadd_back(&head, d);
-// 	t_list *tmp =  head;
-// 	while  (tmp)
-// 	{
-// 		printf("%s \t",tmp->content);
-// 		tmp = tmp->next;
-// 	}
-
-// }
