@@ -21,15 +21,16 @@ OFILES = $(CFILES:.c=.o)
 BOFILES = $(BCFILES:.c=.o)
 
 all: $(NAME) $(HFILE)
-bonus: $(BOFILES)
+bonus: $(BOFILES) $(HFILE)
+	touch bonus
 	ar rcs $(NAME) $(BOFILES)
 $(NAME): $(OFILES) $(HFILE)
 	ar rcs $(NAME) $(OFILES)
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
 clean:
-	rm -f $(OFILES) $(BOFILES)
+	rm -f $(OFILES) $(BOFILES) bonus
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
