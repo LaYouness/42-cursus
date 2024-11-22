@@ -10,10 +10,17 @@
 # define BUFFER_SIZE 10
 # endif
 
-size_t	ft_strlen(const char *str);
+typedef struct	string_list
+{
+	char		*content;
+	s_list		*next;
+} 				s_list;
+
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*get_next_line(int fd);
+s_list	*ft_lstnew(void *content);
+void	ft_lstadd_back(s_list **lst, s_list *new);
 
 # endif

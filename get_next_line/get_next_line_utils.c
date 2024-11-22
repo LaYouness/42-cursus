@@ -1,15 +1,5 @@
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strchr(const char *s, int c)
 {
 	char	*finder;
@@ -27,7 +17,6 @@ char	*ft_strchr(const char *s, int c)
 		return (finder);
 	return (NULL);
 }
-
 char	*ft_strdup(const char *src)
 {
 	size_t	srcl;
@@ -35,8 +24,10 @@ char	*ft_strdup(const char *src)
 	char	*s;
 	char	*o;
 
+	srcl = 0;
+	while (s[srcl])
+		srcl++;
 	s = (char *)src;
-	srcl = ft_strlen(s);
 	cpy = (char *)malloc(srcl + 1);
 	if (!cpy)
 		return (NULL);
@@ -45,5 +36,50 @@ char	*ft_strdup(const char *src)
 		*cpy++ = *s++;
 	*cpy = '\0';
 	return (o);
+}
+
+s_list	*ft_lstnew(void *content)
+{
+	s_list	*head;
+
+	head = malloc(sizeof(s_list));
+	if (!head)
+		return (NULL);
+	head->content = content;
+	head->next = NULL;
+	return (head);
+}
+void	ft_lstadd_back(s_list **lst, s_list *new)
+{
+	s_list	*current;
+
+	if (!*lst)
+		*lst = new;
+	current = *lst;
+	while (current->next)
+		current = current->next;
+	current->next = new;
+	new->next = NULL;
+}
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*newstr;
+	size_t	fl;
+	size_t	sl;
+
+	if (!s1 || !s2)
+		return (NULL);
+	fl = 0;
+	while(s1[fl])
+		fl++;
+	sl = 0;
+	while (s2[sl])
+		sl++;
+	newstr = malloc(fl + sl + 1);
+	if (!newstr)
+		return (NULL);
+	ft_strlcpy(newstr, s1, fl + 1);
+	ft_strlcpy(newstr + fl, s2, sl + 1);
+	return (newstr);
 }
 
