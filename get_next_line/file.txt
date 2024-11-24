@@ -1,2 +1,2 @@
-hello get_next_line
-this is a new line.
+five_five_five_five_
+five_

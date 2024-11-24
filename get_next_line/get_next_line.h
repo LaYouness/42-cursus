@@ -7,20 +7,24 @@
 #include <stdio.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 20
 # endif
 
-typedef struct	string_list
+typedef struct		s_list
 {
-	char		*content;
-	s_list		*next;
-} 				s_list;
+	char			*content;
+	struct s_list	*next;
+} 					s_list;
 
+size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *src);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*get_next_line(int fd);
 s_list	*ft_lstnew(void *content);
-void	ft_lstadd_back(s_list **lst, s_list *new);
+int		ft_lstadd_back(s_list **lst, s_list *new);
+void	*ft_lstclear(s_list **lst);
+char	*get_next_line(int fd);
+char	*get_line(s_list *list, size_t index);
 
 # endif
