@@ -55,17 +55,27 @@ int	ft_lstadd_back(s_list **lst, s_list *new)
 void	*ft_lstclear(s_list **lst)
 {
 	s_list	*tmp;
+	size_t	i;
+	char	*reminder;
 
 	if (!lst)
 		return (NULL);
-	while (*lst)
+	while ((*lst)->next)
 	{
 		tmp = (*lst)->next;
-		free ((*lst)->content);
-		free (*lst);
+		free((*lst)->content);
+		free(*lst);
 		(*lst) = tmp;
 	}
-	*lst = NULL;
+	i = 0;
+	while (((*lst)->content)[i] != '\n' && ((*lst)->content)[i])
+		i++;
+	if (((*lst)->content)[i] == '\n')
+	{
+	reminder = ft_calloc(1, ft_strlen((*lst)->content) - i + 1);
+	ft_strlcpy(reminder, ((*lst)->content) + i + 1, ft_strlen((*lst)->content) - i + 1);
+	*lst = ft_lstnew(reminder);
+	}
 	return (NULL);
 }
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
@@ -86,23 +96,19 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	*d = 0;
 	return (sl);
 }
-char	*ft_strdup(const char *src)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	srcl;
-	char	*cpy;
-	char	*s;
-	char	*o;
-
-	s = (char *)src;
-	srcl = ft_strlen(s);
-	cpy = (char *)malloc(srcl + 1);
-	if (!cpy)
+	unsigned char	*buffer;
+	size_t			n;
+	int				i;
+	buffer = malloc(nmemb * size);
+	if (!buffer)
 		return (NULL);
-	o = cpy;
-	while (*s)
-		*cpy++ = *s++;
-	*cpy = '\0';
-	return (o);
+	n = nmemb * size;
+	i = 0;
+	while (n--)
+		buffer[i++] = 0;
+	return (buffer);
 }
 char	*ft_strjoin(char const *s1, char const *s2)
 {
