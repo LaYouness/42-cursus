@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-char	*get_line(s_list *head)
+char	*get_line(t_list *head)
 {
 	char	*line;
 
@@ -13,23 +13,23 @@ char	*get_line(s_list *head)
 	return (line);
 }
 
-void	read_file(int fd, s_list **head)
+void	read_file(int fd, t_list **head)
 {
-	s_list	*node;
+	t_list	*node;
 	char	*buffer;
 	int		r;
 
 	while (find_newline(*head) < 0)
 	{
-		node = malloc(sizeof(s_list));
+		node = malloc(sizeof(t_list));
 		if (!node)
-			return;
+			return ;
 		buffer = malloc(BUFFER_SIZE);
 		if (!buffer)
-			return(free(node));
+			return (free(node));
 		r = read(fd, buffer, BUFFER_SIZE);
 		if (r <= 0)
-			return;
+			return ;
 		buffer[r] = 0;
 		node->content = buffer;
 		node->next = NULL;
@@ -39,9 +39,10 @@ void	read_file(int fd, s_list **head)
 			last_node(*head)->next = node;
 	}
 }
-char	*get_reminder(s_list *head)
+
+char	*get_reminder(t_list *head)
 {
-	s_list	*tail;
+	t_list	*tail;
 	int		index;
 	char	*new_head_str;
 	char	*tmp;
@@ -67,12 +68,13 @@ char	*get_reminder(s_list *head)
 	}
 	return (new_head_str);
 }
+
 char	*get_next_line(int fd)
 {
 	char			*line;
 	char			*reminder;
-	static s_list	*head;
-	s_list			*new_head_node;
+	static t_list	*head;
+	t_list			*new_head_node;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
@@ -82,7 +84,7 @@ char	*get_next_line(int fd)
 	clean_lst(&head);
 	if (reminder && reminder[0])
 	{
-		new_head_node = malloc(sizeof(s_list));
+		new_head_node = malloc(sizeof(t_list));
 		new_head_node->content = reminder;
 		new_head_node->next = NULL;
 		head = new_head_node;

@@ -6,24 +6,24 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# ifndef	BUFFER_SIZE
-#  define	BUFFER_SIZE 2
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
 # endif
 
-typedef struct 		s_list
+typedef struct t_list
 {
 	char			*content;
-	struct s_list	*next;
-}					s_list;
+	struct t_list	*next;
+}					t_list;
 
-int		find_newline(s_list *head);
-size_t	line_len(s_list *head);
-void	fill_line(char *line, s_list *head);
-void	clean_lst(s_list **head);
-s_list	*last_node(s_list *head);
-char	*get_line(s_list *head);
-void	read_file(int fd, s_list **head);
-char	*get_reminder(s_list *head);
+int		find_newline(t_list *head);
+size_t	line_len(t_list *head);
+void	fill_line(char *line, t_list *head);
+void	clean_lst(t_list **head);
+t_list	*last_node(t_list *head);
+char	*get_line(t_list *head);
+void	read_file(int fd, t_list **head);
+char	*get_reminder(t_list *head);
 char	*get_next_line(int fd);
 
 #endif
