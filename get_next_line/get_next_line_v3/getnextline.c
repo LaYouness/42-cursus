@@ -3,7 +3,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #ifndef	BUFFER_SIZE
-#define BUFFER_SIZE 20
+#define BUFFER_SIZE 2
 #endif
 typedef struct 		s_list
 {
@@ -72,11 +72,12 @@ void	clean_lst(s_list **head)
 		current = current->next;
 		free(tmp);
 	}
+	*head = NULL;
 	return;
 }
 s_list	*last_node(s_list *head)
 {
-	if (head == NULL)
+	if (!head)
 		return (NULL);
 	while (head->next)
 		head = head->next;
@@ -134,9 +135,7 @@ void	read_file(int fd, s_list **head)
 		if (!buffer)
 			return(free(node));
 		r = read(fd, buffer, BUFFER_SIZE);
-		if (r == 0)
-			return;
-		if (r < 0)
+		if (r <= 0)
 			return;
 		buffer[r] = 0;
 		node->content = buffer;
@@ -146,7 +145,6 @@ void	read_file(int fd, s_list **head)
 		else
 			last_node(*head)->next = node;
 	}
-	return;
 }
 char	*get_reminder(s_list *head)
 {
@@ -172,7 +170,7 @@ char	*get_reminder(s_list *head)
 		tmp = new_head_str;
 		while (tail->content[index])
 			*tmp++ = tail->content[index++];
-		tmp[size + 1] = 0;
+		new_head_str[size] = 0;
 	}
 	return (new_head_str);
 }
@@ -181,6 +179,7 @@ char	*get_next_line(int fd)
 	char			*line;
 	char			*reminder;
 	static s_list	*head;
+	s_list			*new_head_node;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
@@ -188,30 +187,27 @@ char	*get_next_line(int fd)
 	line = get_line(head);
 	reminder = get_reminder(head);
 	clean_lst(&head);
-	if (reminder)
+	if (reminder && reminder[0])
 	{
-		head = malloc(sizeof(s_list));
-		head->content = reminder;
-		head->next = NULL;
+		new_head_node = malloc(sizeof(s_list));
+		new_head_node->content = reminder;
+		new_head_node->next = NULL;
+		head = new_head_node;
 	}
+	else
+		free(reminder);
 	return (line);
 }
 int main()
 {
 	int fd = open("file.txt",O_RDONLY);
 	char *line;
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
+	
+	while ((line = get_next_line(fd)))
+	{
+		printf("%s", line);
+		free(line);
+	}
 	close(fd);
 	return 0;
 }
